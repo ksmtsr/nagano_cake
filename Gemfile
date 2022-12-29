@@ -72,3 +72,4 @@ group :test do
 end
 gem 'devise'
 gem 'font-awesome-sass'
+gem "enum_help"

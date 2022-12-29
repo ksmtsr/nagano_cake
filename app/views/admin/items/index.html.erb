@@ -19,10 +19,8 @@
   <tbody>
 <% @items.each do |item| %>
 <tr>
-<td><%= item.id %>
-<%= link_to item.name, admin_item_path(item.id) %>
-</td>
-<td><%= item.name %></td>
+<td><%= item.id %></td>
+<td><%= link_to item.name, admin_item_path(item) %></td>
 <td><%= item.price %></td>
 <td><%= item.genre_id %></td>
 <td>
@@ -36,5 +34,5 @@
 <% end %>
   </tbody>
 </table>
-　</div>
+</div>
 </div>

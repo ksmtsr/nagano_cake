@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'homes/top'
-  end
-  get 'homes/top'
-  # 会員側のルーティング設定
-  get 'items' => 'public/items#index'
-  # 管理者側のルーティング設定
-    namespace :admin do
-    resources :items
-  end
-
-  get 'items/:id/edit' => 'items#edit', as: 'edit_item'
+namespace :admin do
+  root to: 'homes#top'
   patch 'items/:id' => 'items#update', as: 'update_item'
+  get 'items/:id' => 'items#show', as: 'item'
+  resources :items
+
+  get 'customers/:id/edit' => 'customers#edit', as: 'edit_customer'
+  patch 'customers/:id' => 'customers#update', as: 'update_customer'
+
+  resources :customers
+
+  resources :orders do
+  resources :order_detail
+end
+end
+
+namespace :public do
+  get "/" => "homes#top"
+end
+
 
 
 devise_for :customers,skip: [:passwords], controllers: {

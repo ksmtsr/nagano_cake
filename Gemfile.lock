@@ -94,6 +94,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.11.0)
     ffi (1.15.5)
     font-awesome-sass (6.2.1)
@@ -231,6 +233,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  enum_help
   font-awesome-sass
   importmap-rails
   jbuilder

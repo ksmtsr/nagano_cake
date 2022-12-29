@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+   <div class="mt-3 mb-5">
+  <headline><%= @customer.full_name %>さんの会員情報編集</headline>
+   </div>
+  </div>
+</div>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+<div class="container">
+ <div class="form-group row">
+  <div class="col-2">会員ID</div>
+   <div class="col-8">
+    <%= @customer.id %>
+   </div>
+ </div>
+<div class="form-group row">
+  <div class="col-2">氏名</div>
+   <div class="col-8">
+     <%= f.text_field :last_name %>
+    <%= f.text_field :first_name %>
+   </div>
+</div>
+<div class="form-group row">
+  <div class="col-2">フリガナ</div>
+   <div class="col-8">
+     <%= f.text_field :last_name_kana %>
+    <%= f.text_field :first_name_kana %>
+   </div>
+ </div>
+ <div class="form-group row">
+  <div class="col-2">電話番号</div>
+   <div class="col-8">
+      <%= f.text_field :telephon_number %>
+    </div>
+ </div>
+<div class="form-group row">
+ <div class="col-2">メールアドレス</div>
+  <div class="col-8">
+    <%= f.text_field :email %>
+   </div>
+ </div>
+<div class="form-group row">
+ <div class="col-2">会員ステータス</div>
+  <div class="col-8">
+        <%= f.radio_button :is_deleted, :true %>
+      <label>退会</label>
+      <%= f.radio_button :is_deleted, :false %>
+      <label>有効</label>
+  </div>
+  </div>
+<%= link_to "変更を保存", admin_customers_path(@customer), class: "btn btn-lg btn-success"  %>
+</div>
+<% end %>
