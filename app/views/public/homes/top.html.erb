@@ -1,5 +1,5 @@
 <div class="container">
- <div class="mt-5 mb-5">
+ <div class="mt-5 mb-2">
    <div class="row justify-content-center">
     <div class="card" style="max-width: 450px;">
      <img class="card-img" src="/assets/strawberries.jpg" alt="">
@@ -11,7 +11,25 @@
       </div>
     </div>
    </div>
-  </div>
-  
-  <h2>新着商品</h2>
  </div>
+  <div class="row">
+    <div class="col-3"></div>
+     <div class="col-9">
+       <h2>新着商品</h2>
+     </div>
+   <% @item.each do |item| %>
+    <div class="">
+      <div>
+        <% if item.image.attached? %>
+        <%= image_tag item.image, size: "200x200" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        <p><%= item.name %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+
+

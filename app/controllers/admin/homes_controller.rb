@@ -5,6 +5,7 @@ class Admin::HomesController < ApplicationController
   end
 
 
+
 private
 
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 namespace :admin do
   root to: 'homes#top'
   patch 'items/:id' => 'items#update', as: 'update_item'
-  get 'items/:id' => 'items#show', as: 'item'
+  get 'items/:id' => 'items#show', as: 'items'
   resources :items
 
   get 'customers/:id/edit' => 'customers#edit', as: 'edit_customer'
@@ -15,9 +15,14 @@ namespace :admin do
 end
 end
 
-namespace :public do
-  get "/" => "homes#top"
-end
+
+  root to: 'homes#top'
+  get '/about' => 'public/homes#about', as: 'about'
+  get '/customers/:id' => 'public/customers#show'
+  get '/customers/information/:id/edit' => 'public/customers#edit', as: 'customers_information_edit'
+  resources :items
+
+
 
 
 

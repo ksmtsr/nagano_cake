@@ -7,43 +7,43 @@
 <div class="container">
  <div class="row justify-content-center">
   <div class="col-2">
-      <%= f.label :customer_id, "商品画像", :class => "text-right px-5" %>
+    <%= f.label :customer_id, "商品画像", :class => "text-right px-5" %>
+    </div>
+  <div class="col-10">
+<%= f.file_field :image, accept: "image/*" %>
+ </div>
+    <div class="col-2">
+     <%= f.label :name, "商品名", :class => "text-right px-5" %>
+    </div>
+  <div class="col-10">
+<%= f.text_field :name %>
+  </div>
+    <div class="col-2">
+     <%= f.label :introduction, "商品説明", :class => "text-right px-5" %>
+    </div>
+  <div class="col-10">
+<%= f.text_area :introduction, :size => "30x5"%>
+  </div>
+    <div class="col-2">
+     <%= f.label :genre_id, "ジャンル", :class => "text-right px-5" %>
+    </div>
+  <div class="col-10">
+<%= f.select :genre_id, {'ケーキ': 1, 'プリン': 2,'焼き菓子': 3, 'キャンディ': 4}, { include_blank: '--選択してください--'}, { required: true } %>
+  </div>
+    <div class="col-2">
+     <%= f.label :price, "税抜価格", :class => "text-right px-5" %>
+    </div>
+  <div class="col-10">
+<%= f.text_field :price, :placeholder => "1000" %>円
+  </div>
+   <div class="col-2">
+    <%= f.label :is_active, "販売ステータス", :class => "text-right px-5" %>
   </div>
 <div class="col-10">
-     <%= f.file_field :image, accept: "image/*" %>
-</div>
-<div class="col-2">
-     <%= f.label :name, "商品名", :class => "text-right px-5" %>
-</div>
-<div class="col-10">
-    <%= f.text_field :name %>
-</div>
-<div class="col-2">
-    <%= f.label :introduction, "商品説明", :class => "text-right px-5" %>
-</div>
-<div class="col-10">
-      <%= f.text_area :introduction, :size => "30x5"%>
-</div>
- <div class="col-2">
-     <%= f.label :genre_id, "ジャンル", :class => "text-right px-5" %>
-</div>
-<div class="col-10">
-    <%= f.select :genre_id, {'ケーキ': 1, 'プリン': 2,'焼き菓子': 3, 'キャンディ': 4}, { include_blank: '--選択してください--'}, { required: true } %>
-</div>
- <div class="col-2">
-    <%= f.label :price, "税抜価格", :class => "text-right px-5" %>
-</div>
-<div class="col-10">
-      <%= f.text_field :price, :placeholder => "1000" %>円
- </div>
- <div class="col-2">
-    <%= f.label :is_active, "販売ステータス", :class => "text-right px-5" %>
-</div>
-<div class="col-10">
-      <%= f.radio_button :is_active, :true %>
-      <label>販売中</label>
+  <%= f.radio_button :is_active, :true %>
+    <label>販売中</label>
       <%= f.radio_button :is_active, :false %>
-      <label>販売停止中</label>
+    <label>販売停止中</label>
  </div>
 <%= link_to "変更を保存", admin_item_path(@item), class: "btn btn-lg btn-success"  %>
 <% end %>

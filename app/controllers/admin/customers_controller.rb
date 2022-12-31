@@ -1,5 +1,15 @@
 class Admin::CustomersController < ApplicationController
 
+def new
+  @customers = Customer.new
+end
+
+def create
+  customer = Customer.new(item_params)
+  customer.save!
+  redirect_to customers_information_edit_path(cu)
+end
+
 def index
   @customers = Customer.all
 end
@@ -23,8 +33,8 @@ end
 
 private
 
-  def item_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :is_deleted )
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :last_name_kana, :first_name_kana, :email, :postal_code,:address, :telephon_number, :is_deleted )
   end
 
 end
