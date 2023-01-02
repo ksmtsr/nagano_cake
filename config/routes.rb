@@ -5,11 +5,30 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-namespace :admin do
+  root to: 'homes#top'
+  get '/about' => 'public/homes#about', as: 'about'
+  get '/items/:id' => 'public/items#show', as: 'items'
+  resources :items
+  resources :cart_items
+
+
+  get '/customers/information/:id/edit' => 'public/customers#edit', as: 'customers_information_edit'
+  get '/customers/:id' => 'public/customers#show', as: 'customer'
+  resources :customers
+
+
+
+  post '/orders/confirm' => 'public/oders#confirm', as: 'orders_confirm'
+  resources :orders
+  resources :addresses
+
+
+ namespace :admin do
+
   root to: 'homes#top'
   patch 'items/:id' => 'items#update', as: 'update_item'
   get 'items/:id' => 'items#show', as: 'items'
@@ -21,24 +40,12 @@ namespace :admin do
 
   resources :orders do
   resources :order_detail
+ end
+
 end
-end
 
 
-  root to: 'homes#top'
-  get '/about' => 'public/homes#about', as: 'about'
-  get '/items/:id' => 'public/items#show', as: 'items'
-  resources :items
 
-  get '/customers/information/:id/edit' => 'public/customers#edit', as: 'customers_information_edit'
-  get '/customers/:id' => 'public/customers#show', as: 'customer'
-  resources :customers
-
-  resources :cart_items
-
-  post '/orders/confirm' => 'public/oders#confirm', as: 'orders_confirm'
-
-  resources :addresses
 
 
 
