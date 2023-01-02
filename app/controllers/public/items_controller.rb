@@ -1,5 +1,13 @@
 class Public::ItemsController < ApplicationController
 
+  def new
+    @items = Item.new
+  end
+
+  def show
+    @items = Item.find(params[:id])
+  end
+
   def index
     @items = Item.all
   end

@@ -6,11 +6,24 @@ class Public::CustomersController < ApplicationController
 
   def create
     customer = Customer.find(params[:id])
-    customer.save!
+    customer.save
     redirect_to customers_information_edit_path
   end
 
   def show
+    @customer = Customer.find(params[:id])
+  end
+
+  def edit
+    @customer = Customer.find(params[:id])
+      if @customer == current_customer
+            render "show"
+      else
+            redirect_to customer_path
+      end
+  end
+
+  def update
     @customer = Customer.find(params[:id])
   end
 

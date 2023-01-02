@@ -7,7 +7,7 @@
   <headline>会員の方はこちらからログイン</headline>
 </div>
 <div class="text-center">
-<%= form_with model: @customers, url: public_items_path, local: true do |f| %>
+<%= form_with model: @customers do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %>
     <%= f.email_field :email, class: "w-25", autofocus: true, autocomplete: "email" %>
@@ -19,7 +19,7 @@
   <div class="form-group row">
    <div class="col-2"></div>
     <div class="col-8">
-    <%= link_to "ログイン", public_items_path(@item), class: "btn btn-lg btn-primary w-25 mt-5"  %>
+    <%= link_to "ログイン", customer_path(@customer), class: "btn btn-lg btn-primary w-25 mt-5"  %>
   </div>
 </div>
 <% end %>
