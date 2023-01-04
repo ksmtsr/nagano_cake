@@ -1,5 +1,17 @@
 <div class="container">
   <div class="row">
-    <%= @items.image %>
+    <div class="col"></div>
+    <div class="col">
+      <% if @items.image.attached? %>
+          <%= image_tag @items.image, size: "200x130" %>
+            <% else %>
+          <%= image_tag 'no_image', size: "200x130" %>
+        <% end %>
+    </div>
+    <div class="col">
+      <h2><%= @items.name %></h2>
+    <h4><%= @items.introduction %></h4>
+    ¥<%= @items.with_tax_price %>（税込）
+    </div>
   </div>
 </div>

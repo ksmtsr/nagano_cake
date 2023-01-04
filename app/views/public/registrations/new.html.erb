@@ -2,74 +2,58 @@
   <div class="mt-5 mb-5">
    <headline>新規会員登録</headline>
   </div>
-</div>
-<%= form_with model: @customers do |f| %>
+
+<%= form_with model: @customers, url: registration_path(resource_name) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  <div class="container">
-<div class="form-group row">
-  <div class="col-2">氏名</div>
-   <div class="col-8">
-    （姓） <%= f.text_field :last_name, class: "col-auto" %>
-    （名）<%= f.text_field :first_name, class: "col-auto" %>
+<div class="row justify-content-center">
+<table class="table table-borderless">
+ <tr>
+  <td>氏名</td>
+    <td>（姓） <%= f.text_field :last_name, class: "col-auto" %></td>
+      <td>（名）<%= f.text_field :first_name, class: "col-auto" %></td>
+    </tr>
+  <tr>
+<td>フリガナ</td>
+  <td>（セイ）<%= f.text_field :last_name_kana, class: "col-auto" %></td>
+    <td>（メイ）<%= f.text_field :first_name_kana, class: "col-auto" %></td>
+  </tr>
+ <tr>
+<td>メールアドレス</td>
+  <td><%= f.email_field :email, class: "col-auto", autofocus: true, autocomplete: "email" %></td>
+    </tr>
+  <tr>
+<td>郵便番号</td>
+  <td><%= f.text_field :postal_code, class: "col-auto", autofocus: true, autocomplete: "postal_code" %></td>
+   </tr>
+ <tr>
+<td>住所</td>
+  <td><%= f.text_field :address, class: "col-auto", autofocus: true, autocomplete: "address" %></td>
+   </tr>
+  <tr>
+<td>電話番号(ハイフン無し)</td>
+ <td><%= f.text_field :phone_number, class: "col-auto" %></td>
+  </tr>
+ <tr>
+<td>パスワード
+   <% if @minimum_password_length %>
+     (<%= @minimum_password_length %> 文字以上)</td>
+      <% end %><br />
+    <td><%= f.password_field :password, class: "col-auto", autocomplete: "new-password"%></td>
+   </tr>
+  <tr>
+<td>パスワード(確認用)</td>
+ <td><%= f.password_field :password_confirmation, class: "col-auto", autocomplete: "new-password" %></td>
+  </tr>
    </div>
+    </table>
+   <div class="text-center">
+  <%= f.submit "新規登録", class: "btn btn-lg btn-success " %>
+ <% end %>
 </div>
-<div class="form-group row">
-  <div class="col-2">フリガナ</div>
-   <div class="col-8">
-     （セイ）<%= f.text_field :last_name_kana, class: "col-auto" %>
-    （メイ）<%= f.text_field :first_name_kana, class: "col-auto" %>
-   </div>
- </div>
-<div class="form-group row">
-  <div class="col-2">メールアドレス</div>
-     <div class="col-8">
-      <%= f.email_field :email, class: "col-auto", autofocus: true, autocomplete: "email" %>
-    </div>
-</div>
-<div class="form-group row">
-    <div class="col-2">郵便番号</div>
-     <div class="col-8">
-      <%= f.text_field :postal_code, class: "col-auto", autofocus: true, autocomplete: "postal_code" %>
-    </div>
-</div>
-<div class="form-group row">
-  <div class="col-2">住所</div>
-     <div class="col-8">
-      <%= f.text_field :address, class: "col-auto", autofocus: true, autocomplete: "address" %>
-    </div>
-</div>
-<div class="form-group row">
-   <div class="col-2">電話番号(ハイフン無し)</div>
-     <div class="col-8">
-      <%= f.text_field :phone_number, class: "col-auto" %>
-    </div>
-  </div>
-<div class="form-group row">
-   <div class="col-2">パスワード
-       <% if @minimum_password_length %>
-    (<%= @minimum_password_length %> 文字以上)
-    <% end %><br />
-    </div>
-    <div class="col-8">
-      <%= f.password_field :password, class: "col-auto", autocomplete: "new-password"%>
-    </div>
- </div>
-<div class="form-group row">
-   <div class="col-2">パスワード(確認用)</div>
-    <div class="col-8">
-      <%= f.password_field :password_confirmation, class: "col-auto", autocomplete: "new-password" %>
-     </div>
-   </div>
 
-   <div class="col-2"></div>
-    <div class="col-8">
-     <%= f.submit "新規登録", customer_path(@customer), class: "btn btn-lg btn-success w-25" %>
-  </div>
 
-<% end %>
- <div class="row">
+
   <headline>既に登録済みの方</headline>
- </div>
   <p><%= link_to "こちら", new_customer_session_path(@customer) %>からログインしてください。</p>
 </div>
 

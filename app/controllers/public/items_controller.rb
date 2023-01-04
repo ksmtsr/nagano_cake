@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
 
   def create
     item = Item.new(params[:id])
-    item.save!
+    item.save
     redirect_to public_items_path
   end
 
