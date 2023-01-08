@@ -73,3 +73,4 @@ end
 gem 'devise'
 gem 'font-awesome-sass'
 gem "enum_help"
+gem 'kaminari','~> 1.2.1'

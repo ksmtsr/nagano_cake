@@ -1,5 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4 mt-5 h2">配送先登録/一覧</div>
+  <div class="mt-5 mb-5">
+    <headline>配送先登録 / 一覧</headline>
   </div>
+  <table class="table table-borderless">
+    <%= form_with model: @address, url: addresses_path do |f| %>
+    <tr>
+      <td>郵便番号(ハイフン無し)</td>
+      <td><%= f.text_field :postal_code, class: "col-auto", autofocus: true, autocomplete: "postal_code" %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, class: "col-auto", autofocus: true, autocomplete: "address" %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :name, class: "col-auto", autofocus: true, autocomplete: "name" %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

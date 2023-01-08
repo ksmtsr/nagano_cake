@@ -1,14 +1,17 @@
 class Public::OrdersController < ApplicationController
 
-  def confirm
-    @order = Order.new
-  end
+    def confirm
+      @orders = current_customer_oder
+    end
 
+    def show
+      @orders = Order.find(params[:id])
+    end
 
-  private
+    private
 
-  def order_params
-    params.require(:order).permit(:item_id, :order_id, :tax_included_price, :amount, :making_status )
-  end
+    def order_params
+    params.require(:order).permit(:customer_id, :payment_method, :amount, :postage, :postal_code, :address, :name,:status )
+    end
 
 end

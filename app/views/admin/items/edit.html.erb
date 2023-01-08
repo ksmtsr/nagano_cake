@@ -3,7 +3,6 @@
     <headline>商品編集</headline>
    </div>
  </div>
-<div class="container">
   <div class="row justify-content-center">
     <%= form_with model: @item, url: admin_update_item_path(@item.id) do |f| %>
       <table class="table table-borderless">
@@ -30,6 +29,7 @@
    <tr>
 <td>販売ステータス</td>
   <td>
+    <% @item.is_active %>
   <%= f.radio_button :is_active, :true %>
     <label>販売中</label>
       <%= f.radio_button :is_active, :false %>

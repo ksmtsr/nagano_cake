@@ -1,11 +1,10 @@
 <div class="container">
- <div class="row">
-  <div class="col-md-9 px-auto">
-   <div class="mt-5 mb-5">
+  <div class="mt-5 mb-5">
     <headline>商品新規登録</headline>
    </div>
-  <%= form_with model: @item, url: admin_items_path do |f| %>
+ </div>
  <div class="row justify-content-center">
+  <%= form_with model: @item, url: admin_items_path do |f| %>
 <table class="table table-borderless">
   <tr>
     <td>商品画像</td>
@@ -41,8 +40,8 @@
    </div>
     </div>
    </div>
-  </div>
-</div>
+
+
 <% end %>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

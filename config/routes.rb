@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
-  get '/items/:id' => 'items#show', as: 'items'
+  get '/items/:id' => 'items#show', as: 'item'
+  get '/items' => 'items#index', as: 'items'
   resource :items
   resources :cart_items
+  delete 'cart_item/destroy_all' => 'cart_items#destroy_all'
 
   get '/customers/information/edit' => 'customers#edit', as: 'edit_customers'
   resource :customers
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
 
 
   post '/orders/confirm' => 'oders#confirm', as: 'orders_confirm'
+
   resources :orders
   resources :addresses
 
