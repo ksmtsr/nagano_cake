@@ -7,7 +7,7 @@
  <thead>
 <tr bgcolor="#f5f5f5">
  <th>商品名</th><th>単価(税込)</th>
-  <th>数量</th><th>小計</th>
+  <th>数量</th><th>小計</th><th></th>
    </tr>
     </thead>
    <% @cart_items.each do |cart_item| %>
@@ -18,9 +18,13 @@
   <% @cart_item = CartItem.find(cart_item.id) %>
   <%= form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
    <%= f.select :amount, *[1..20], value: cart_item.amount %>
+   <% if @cart_item.customer == current_customer %>
+   <%= button_to "変更", cart_items_update_path(cart_item), class: "btn btn-sm btn-success" %>
+  <% end %>
   <% end %>
  </td>
-    <td><%#= cart_item.subtotal %></td>
+    <td><%= cart_item.subtotal %></td>
+    <td><%= button_to "削除する", cart_items_destroy_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
    </tr>
   <% end %>
   </table>

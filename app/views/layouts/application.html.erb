@@ -19,34 +19,41 @@
     <%= javascript_importmap_tags %>
   </head>
 <header>
+  <div class="border-bottom border-dark" style="padding:10px;">
+  <div class="text-right">
+
 <% if admin_signed_in? %>
+
 <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %>
 <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary" %>
 <%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-secondary" %>
 <%= link_to "ジャンル一覧", class: "btn btn-outline-secondary" %>
 <%= button_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %>
-<% else %>
-<%= link_to "About", about_path, class: "btn btn-outline-secondary" %>
-<%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %>
-<%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %>
-<%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %>
-<% end %>
 
-<% if customer_signed_in? %>
+<% elsif customer_signed_in? %>
+
+ようこそ、<%= current_customer.last_name %>さん！
+
 <%= link_to "マイページ", customers_path, class: "btn btn-outline-secondary" %>
 <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %>
 <%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary" %>
 <%= button_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary" %>
+
 <% else %>
+
 <%= link_to "About", about_path, class: "btn btn-outline-secondary" %>
 <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %>
 <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %>
 <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %>
+
 <% end %>
+</div>
 
-
+</div>
 </header>
   <body>
     <%= yield %>
   </body>
+  <footer>
+  </footer>
 </html>
