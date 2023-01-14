@@ -1,11 +1,15 @@
 class Public::AddressesController < ApplicationController
 
   def new
-    @addresses = Address.new
+    @address = Address.new
   end
 
   def create
-    @addresses = Address.find(params[:id])
+    @address = Address.find(params[:id])
+  end
+
+  def index
+    @address = Address.find(params[:id])
   end
 
 

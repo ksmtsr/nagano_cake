@@ -3,7 +3,7 @@
      <headline>注文情報入力</headline>
    </div>
 <table class="table table-borderless">
-   <%= form_with model: @orders do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path do |f| %>
     <tr>
      <td>
       <strong>支払方法</strong>
@@ -23,29 +23,33 @@
   <tr>
     <td>
       <strong>お届け先</strong>
-      <% end %>
     </td>
   </tr>
   <tr>
-   <%= form_with model: @customer do |f| %>
      <td>
-        <%= f.radio_button (:address), "customer_address" %>
+        <%= f.radio_button :select_address, 1 %>
        <%= f.label :customer_address, "ご自身の住所" %>
+        <tr>
+     <td>〒<%= @customer.postal_code %>
+       <%= @customer.address %>
+       <%= @customer.last_name %>
+       <%= @customer.first_name %></td>
+       </tr>
      </td>
    </tr>
    <tr>
      <td>
-        <%= f.radio_button (:current_customer_address), "current_customer_address" %>
+        <%= f.radio_button :select_address, 2 %>
       <%= f.label :current_customer_address, "登録済み住所から選択" %></td>
    </tr>
    <tr>
       <td>
-         <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+         <%= f.select :address, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
       </td>
    </tr>
    <tr>
       <td>
-         <%= f.radio_button (:new_address), "new_address" %>
+         <%= f.radio_button :select_address, 3 %>
         <%= f.label :new_address, "新しいお届け先" %>
       </td>
    </tr>
@@ -65,8 +69,10 @@
   <tr>
 <td>宛名</td>
   <td><%= f.text_field :name, class: "col-auto" %></td>
+    <div class="text-center">
+    <td><%= f.submit "確認画面に進む", class:"btn btn-primary" %></td>
+     </div>
    </tr>
-    <% end %>
+<% end %>
  </table>
 </div>
-

@@ -1,7 +1,9 @@
 <div class="container">
   <div class="mt-5 mb-5">
     <headline>注文情報確認</headline>
-  <table class="table">
+    <div class="row">
+     <div class="col-8">
+  <table class="table table-bordered border-dark">
     <thead>
 <tr bgcolor="#f5f5f5">
  <th>商品名</th><th>単価(税込)</th>
@@ -9,15 +11,44 @@
    </tr>
     </thead>
     <% @cart_items.each do |cart_item| %>
+
   <tr>
- <td><%= item.name %></td>
+ <td><%= cart_item.item.name %></td>
 <td><%= cart_item.item.with_tax_price %></td>
- <td><%= form_with model: @cart_items do |f| %>
-  <%= f.select :amount, *[1..20],{ include_blank: ''} %>
+ <td>
+  <%= cart_item.amount %>
    </td>
-   <% end %>
     <td><%= cart_item.subtotal %></td>
    </tr>
-  <% end %>
+<% end %>
+</table>
+</div>
+  <div class="col-4">
+<table class="table table-bordered border-dark">
+ <% @cart_items.each do |cart_item| %>
+ <% @total += cart_item.subtotal %>
+ <% end %>
+ <tr>
+  <td>送料</td>
+<td><%= POSTAGE %></td>
+</tr>
+<tr>
+<td>商品合計</td>
+<td><%= @total %></td>
+</tr>
+<tr>
+ <td>請求金額</td>
+ <td><%= POSTAGE + @total %></td>
+</tr>
   </table>
 </div>
+</div>
+</div>
+<h4><strong>支払い方法</strong></h4>
+<%= @order.payment_method_i18n %>
+<h4><strong>お届け先</strong></h4>
+<%= @order.address_display %>
+<div class="text-center">
+   <%= link_to "注文を確定する", orders_complete_path(@orders), class: "btn btn-success " %>
+  </div>
+

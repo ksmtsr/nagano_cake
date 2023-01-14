@@ -20,23 +20,29 @@
   </head>
 <header>
   <div class="border-bottom border-dark" style="padding:10px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+    <p class="font-weight-bold text-info h1">ながのCAKE</p>
+    </div>
+    <div class="col-8">
   <div class="text-right">
 
 <% if admin_signed_in? %>
-
-<%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %>
-<%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary" %>
-<%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-secondary" %>
-<%= link_to "ジャンル一覧", class: "btn btn-outline-secondary" %>
+<div class="btn-group">
+<%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mr-3" %>
+<%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mr-3" %>
+<%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-secondary mr-3" %>
+<%= link_to "ジャンル一覧", admin_root_path, class: "btn btn-outline-secondary mr-3" %>
 <%= button_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %>
 
 <% elsif customer_signed_in? %>
 
 ようこそ、<%= current_customer.last_name %>さん！
 
-<%= link_to "マイページ", customers_path, class: "btn btn-outline-secondary" %>
-<%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %>
-<%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary" %>
+<%= link_to "マイページ", customers_path, class: "btn btn-outline-secondary mr-3" %>
+<%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary mr-3" %>
+<%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary mr-3" %>
 <%= button_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary" %>
 
 <% else %>
@@ -45,15 +51,16 @@
 <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %>
 <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %>
 <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %>
-
+</div>
 <% end %>
 </div>
-
-</div>
+  </div>
+    </div>
+  </div>
 </header>
   <body>
     <%= yield %>
   </body>
-  <footer>
-  </footer>
+    <footer>
+    </footer>
 </html>

@@ -1,8 +1,23 @@
 class Public::CartItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def new
+    @cart_items = current_customer.cart_items
+  end
+
   def index
     @cart_items = current_customer.cart_items
+    @total = 0
+  end
+
+  def subtotal
+    item.with_tax_price * amount
+  end
+
+  def confirm
+    @cart_item = CartItem.find(params[:id])
+    @total = 0
+    #@order = current_customer.order
   end
 
   def create
@@ -39,7 +54,7 @@ class Public::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-      params.require(:cart_item).permit(:item_id, :amount, :customer_id)
+      params.require(:cart_item).permit(:item_id, :amount, :customer_id, :payment_method)
   end
 
 end

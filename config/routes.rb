@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
 
 
-  post '/orders/confirm' => 'oders#confirm', as: 'orders_confirm'
-
+  post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+  get 'orders/complete' => 'orders#complete', as: 'orders_complete'
   resources :orders
   resources :addresses
 

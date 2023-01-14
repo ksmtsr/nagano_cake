@@ -14,7 +14,7 @@
 </table>
 <tbody>
 <% @order.each do |order| %>
-<td><%= link_to l order.created_at admin_orders_path(order) %></td>
+<td><%= link_to @order.created_at admin_orders_path(order) %></td>
 <td><%= order.full_name %></td>
 <td><%= order_detail.amount %></td>
 <td><%= order.stutas %></td
