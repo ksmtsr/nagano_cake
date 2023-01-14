@@ -19,7 +19,7 @@ def show
 end
 
 def edit
-  @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
 end
 
 def update
@@ -35,6 +35,6 @@ end
 private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :genre_id, :is_active, :image)
+    params.require(:item).permit(:name, :introduction, :price, :genre_id, :is_active, :image, :customer_id)
   end
 end

@@ -10,7 +10,7 @@
  <div class="d-flex flex-row">
   <div class="h5 p-2 mt-5 font-weight-bold">登録情報</div>
    <div class="p-2 mt-5">
-    <%= link_to "編集する", edit_customers_path(@customer), class: "btn btn-success btn-sm" %>
+    <%= link_to "編集する", edit_customers_path, class: "btn btn-success btn-sm" %>
    </div>
 </div>
 <table class="table w-50 mb-5 table-bordered">
@@ -42,8 +42,8 @@
 </tr>
 </table>
 <div class="d-flex flex-row">
- <div class="h5 p-2 mt-5 font-weight-bold">配送先</div>
-  <div class="p-2 mt-5 ml-3">
+ <div class="h5 p-2 mt-3 font-weight-bold">配送先</div>
+  <div class="p-2 mt-3 ml-3">
     <%= link_to "一覧を見る", edit_customers_path(@customer), class: "btn btn-primary btn-sm" %>
   </div>
  </div>

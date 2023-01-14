@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
 
  scope module: :public do
-
   root to: 'homes#top'
+  post '/customers/sign_in' => 'sessions#create', as: 'customer_session_path'
   get '/about' => 'homes#about', as: 'about'
   get '/items/:id' => 'items#show', as: 'item'
   get '/items' => 'items#index', as: 'items'
@@ -24,7 +24,10 @@ Rails.application.routes.draw do
   resources :cart_items
 
   get '/customers/information/edit' => 'customers#edit', as: 'edit_customers'
-  resource :customers
+  get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+  patch 'customers/update' => 'customers#update', as: 'customer_update'
+  patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customer_withdrawal'
+  resource :customers, only: [:show]
 
 
 

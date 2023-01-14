@@ -8,7 +8,7 @@
 <div class="row justify-content-center">
  <div class="col-6">
   <table class="table table-borderless">
-   <%= form_with model: @customers, url: root_path do |f| %>
+   <%= form_with model: @customers do |f| %>
     <tr>
    <td><%= f.label :メールアドレス %></td>
   <td><%= f.email_field :email, class: "w-100", autofocus: true, autocomplete: "email" %></td>

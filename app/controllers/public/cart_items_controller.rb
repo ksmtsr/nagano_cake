@@ -15,6 +15,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def confirm
+
     @cart_item = CartItem.find(params[:id])
     @total = 0
     #@order = current_customer.order

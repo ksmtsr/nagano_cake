@@ -15,12 +15,16 @@
     <td><%= @order.address %></td>
       </tr>
         <tr>
+          <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+            <%= f.select :statuses, Order.statuses.keys, class: "statuses" %>
+            <%= f.submit "更新" , class: "btn btn-outline-success" %>
+          <% end %>
           <td>ステータス</td>
         <td><%= @order.status %></td>
       </tr>
     <tr>
       <td>電話番号</td>
-      <td><%#= @order.telephone_number %></td>
+      <td><%= @order.telephone_number %></td>
     </tr>
 </table>
 <strong>請求情報</strong>
@@ -35,7 +39,7 @@
   </tr>
 <tr>
   <td>ご請求額</td>
-    </tr>
+</tr>
       </tr>
     </table>
   </div>

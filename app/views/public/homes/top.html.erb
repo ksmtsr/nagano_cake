@@ -15,10 +15,12 @@
    </div>
     <% @items.each do |item| %>
       <div>
+       <%= link_to item_path(item) do %>
         <% if item.image.attached? %>
         <%= image_tag item.image, size: "200x200" %>
         <% else %>
         <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
         <% end %>
         <p><%= item.name %></p>
         <p>¥<%= item.price %></p>
