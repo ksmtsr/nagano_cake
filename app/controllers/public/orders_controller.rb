@@ -7,7 +7,16 @@ class Public::OrdersController < ApplicationController
 
     def create
       @order = Order.new(order_params)
+      @order.customer_id = current_customer.id
       @order.save
+      current_customer.cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.amount = cart_item.amount
+        @order_detail.tax_included_price = cart_item.item.with_tax_price
+        @order_detail.order_id = @order.id
+        @order_detail.save
+      end
       redirect_to orders_complete_path
     end
 
@@ -16,7 +25,7 @@ class Public::OrdersController < ApplicationController
     end
 
     def confirm
-      @order =  Order.new(order_params)
+      @order =  Order.new
       @cart_items = CartItem.all
       @customer = current_customer
       @total = 0
@@ -44,7 +53,7 @@ class Public::OrdersController < ApplicationController
     private
 
     def order_params
-      params.require(:order).permit(:payment_method, :postal_code, :address, :last_name, :first_name, :address, :telephone_number, :customer_id, :name, :created_at)
+      params.require(:order).permit(:payment_method, :postal_code, :address, :customer_id, :name, :postage, :amount)
     end
 
 end
