@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
  scope module: :public do
   root to: 'homes#top'
-  post '/customers/sign_in' => 'sessions#create', as: 'customer_session_path'
-  get '/about' => 'homes#about', as: 'about'
-  get '/items/:id' => 'items#show', as: 'item'
-  get '/items' => 'items#index', as: 'items'
+  post 'customers/sign_in' => 'sessions#create', as: 'customer_session_path'
+  get 'about' => 'homes#about', as: 'about'
+  get 'items/:id' => 'items#show', as: 'item'
+  get 'items' => 'items#index', as: 'items'
   resource :items
 
   delete 'cart_item/destroy_all' => 'cart_items#destroy_all'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   patch 'cart_items/:id' => 'cart_items#update', as: 'cart_items_update'
   resources :cart_items
 
-  get '/customers/information/edit' => 'customers#edit', as: 'edit_customers'
+  get 'customers/information/edit' => 'customers#edit', as: 'edit_customers'
   get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
   patch 'customers/update' => 'customers#update', as: 'customer_update'
   patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customer_withdrawal'
@@ -31,10 +31,13 @@ Rails.application.routes.draw do
 
 
 
-  post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+  post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
   get 'orders/complete' => 'orders#complete', as: 'orders_complete'
   resources :orders
-  resources :addresses
+
+  delete 'addresses/:id' => 'addresses#destroy', as: 'addresses_destroy'
+  patch 'addresses/:id' => 'addresses#update', as: 'addresses_update'
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
  end
 
