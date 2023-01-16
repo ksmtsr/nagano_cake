@@ -27,6 +27,7 @@ class Public::OrdersController < ApplicationController
     end
 
     def confirm
+      @address = Address.find(params[:order][:address_id])
       @order =  Order.new
       @cart_items = CartItem.all
       @customer = current_customer
@@ -37,8 +38,9 @@ class Public::OrdersController < ApplicationController
         @order.address = @customer.address
         @order.name = @customer.full_name
       elsif params[:order][:select_address] == "2"
-        @order.address = @address.address
-        #@order. =
+        @order.address = @address.receiver_address
+        @order.postal_code = @address.postal_code
+        @order.name = @address.name
       end
 
       #@address = Address.find(params[:order][:address_id])

@@ -6,9 +6,8 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order = Order.new
-    @customer = current_customer
-    @order_details = current_customer.order_details
+    @order_details = @order.order_details
+    @total = 0
   end
 
   def update

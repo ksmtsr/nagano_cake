@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   has_many :addresses, dependent: :destroy
 
   def address_display
-  '〒' + postal_code + ' ' + address + ' ' + name
+  "〒" + postal_code + " " + address + " " + name
   end
 
   def full_name

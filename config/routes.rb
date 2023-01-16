@@ -46,7 +46,8 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   patch 'items/:id' => 'items#update', as: 'update_item'
-
+  
+  
   resources :items
 
   get 'customers/:id/edit' => 'customers#edit', as: 'edit_customer'
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
   resources :customers
 
   resources :orders do
-  resources :order_detail
+  resources :order_details
  end
 
 end
