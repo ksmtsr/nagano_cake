@@ -33,7 +33,7 @@
       </tr>
      <tr>
    <td>電話番号</td>
- <td><%= f.text_field :telephon_number %></td>
+ <td><%= f.text_field :telephone_number %></td>
    </tr>
    <tr>
  <td>メールアドレス</td>
@@ -43,12 +43,13 @@
      <td>会員ステータス</td>
    <td>
  <%= f.radio_button :is_deleted, :true %>
-  <label>退会</label>
+  有効
   <%= f.radio_button :is_deleted, :false %>
-  <label>有効</label>
-    </td></tr>
-     <% end %>
+  退会
+   </td>
+     </tr>
       </table>
-     <%= link_to "変更を保存", admin_customers_path(@customer), class: "btn btn-lg btn-success mx-auto"  %>
+      <%= f.submit "変更を保存", class: "btn btn-lg btn-success mx-auto"  %>
+     <% end %>
    </div>
  </div>

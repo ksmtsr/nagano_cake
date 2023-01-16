@@ -4,8 +4,9 @@
   <div class="mt-3 mb-5">
   <headline>商品一覧</headline>
 </div>
+<%= link_to "新規登録" url: new_admin_item_path %>
 </div>
-<div class="fa-thin fa-circle-plus"></div>
+
 <table class="table"align="center">
   <thead>
     <tr bgcolor="#f5f5f5">
@@ -16,10 +17,10 @@
   <tbody>
 <% @items.each do |item| %>
 <tr>
-<td><%= item.id %></td>
-<td><%= link_to item.name, admin_item_path(item) %></td>
-<td><%= item.price %></td>
-<td><%= item.genre_id %></td>
+  <td><%= item.id %></td>
+    <td><%= link_to item.name, admin_item_path(item) %></td>
+    <td><%= item.price %></td>
+  <td><%= item.genre_id %></td>
 <td>
 <% if item.is_active %>
   <p>販売中</p>
@@ -32,4 +33,5 @@
   </tbody>
 </table>
 </div>
+<%= paginate @items %>
 </div>
