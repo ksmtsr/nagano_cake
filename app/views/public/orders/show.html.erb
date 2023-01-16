@@ -14,18 +14,14 @@
     <td>配送先</td>
     <td><%= @order.address %></td>
       </tr>
+      <tr>
+        <td>支払方法</td>
+        <td><%= @order.payment_method %></td>
+      </tr>
         <tr>
-          <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-            <%= f.select :statuses, Order.statuses.keys, class: "statuses" %>
-            <%= f.submit "更新" , class: "btn btn-outline-success" %>
-          <% end %>
           <td>ステータス</td>
         <td><%= @order.status %></td>
       </tr>
-    <tr>
-      <td>電話番号</td>
-      <td><%= @order.telephone_number %></td>
-    </tr>
 </table>
 <strong>請求情報</strong>
   <table class="table table-bordered">
@@ -33,12 +29,15 @@
       <thead>
         <tr>
           <td>商品合計</td>
+          <td></td>
         </tr>
       <tr>
-    <td>配送料</th>
+    <td>配送料</td>
+    <td><%= @order.POSTAGE %></td>
   </tr>
 <tr>
   <td>ご請求額</td>
+  <td><%= @order.amount %></td>
 </tr>
       </tr>
     </table>

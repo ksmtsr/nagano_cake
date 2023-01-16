@@ -22,6 +22,8 @@ class Public::OrdersController < ApplicationController
 
     def index
       @orders = current_customer.orders
+      @cart_items = CartItem.all
+      @total = 0
     end
 
     def confirm
@@ -46,7 +48,6 @@ class Public::OrdersController < ApplicationController
     end
 
     def show
-      @item = Item.find(params[:id])
       @order = Order.find(params[:id])
     end
 

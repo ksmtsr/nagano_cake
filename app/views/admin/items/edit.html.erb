@@ -31,15 +31,15 @@
   <td>
     <% @item.is_active %>
   <%= f.radio_button :is_active, :true %>
-    <label>販売中</label>
+    販売中
       <%= f.radio_button :is_active, :false %>
-    <label>販売停止中</label>
+    販売停止中
   </td>
     </tr>
       </div>
         </table>
       <div class="text-center">
-    <%= link_to "変更を保存", admin_item_path(@item), class: "btn btn-lg btn-success"  %>
+    <%= f.submit "変更を保存", class: "btn btn-lg btn-success"  %>
   </div>
     <% end %>
       </div>
