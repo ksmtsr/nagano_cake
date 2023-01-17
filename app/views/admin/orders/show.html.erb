@@ -55,37 +55,35 @@
     <th>商品名</th><th>単価(税込)</th>
     <td>数量</td><td>小計</td><td>制作ステータス</td>
   </tr>
-
-    <% @order_details.each do |order_detail| %>
+  <% @order_details.each do |order_detail| %>
     <%= form_with model: order_detail, url: admin_order_order_detail_path(@order,order_detail) do |f| %>
     <tr>
       <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.item.with_tax_price %></td>
-      <td><%= order_detail.amount %></td>
-      <td><%= order_detail.item.with_tax_price*order_detail.amount %></td>
+        <td><%= order_detail.item.with_tax_price %></td>
+          <td><%= order_detail.amount %></td>
+        <td><%= order_detail.item.with_tax_price*order_detail.amount %></td>
       <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
       <%= f.submit "更新", class: "btn　btn-sm btn-success" %></td>
     </tr>
-      <% end %>
-      <% end %>
+  <% end %>
+  <% end %>
 </table>
   <div class="col-md-3 offset-md-1 mt-5">
     <table>
       <tr>
-    <th class="h5 font-weight-bold">商品合計</th>
-    <td class="pl-2"><%= @order.amount - @order.postage %>円</td>
-    </tr>
-    <tr>
-    <th class="h5 font-weight-bold">送料</th>
-    <td class="pl-2"><%= @order.postage %>円</td>
-    </tr>
-    <tr>
-    <th class="h5 font-weight-bold">請求金額合計</th>
-    <td class="pl-2"><%= @order.amount %>円</td>
-    </tr>
+        <th class="h5 font-weight-bold">商品合計</th>
+          <td class="pl-2"><%= @order.amount - @order.postage %>円</td>
+      </tr>
+      <tr>
+        <th class="h5 font-weight-bold">送料</th>
+          <td class="pl-2"><%= @order.postage %>円</td>
+      </tr>
+      <tr>
+        <th class="h5 font-weight-bold">請求金額合計</th>
+          <td class="pl-2"><%= @order.amount %>円</td>
+      </tr>
     </table>
-
-    </div>
+  </div>
   </div>
 </div>
 

@@ -2,11 +2,11 @@
    <div class="mt-5 mb-5">
      <headline>注文情報入力</headline>
    </div>
- <table class="table table-borderless">
+    <table class="table table-borderless">
    <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
     <tr>
      <td>
-      <strong>支払方法</strong>
+      <div class="h5 font-weight-bold pr-5">支払方法</div>
      </td>
     </tr>
   <tr>
@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td>
-      <strong>お届け先</strong>
+      <div class="h5 font-weight-bold pr-5">お届け先</div>
     </td>
   </tr>
   <tr>
@@ -30,10 +30,9 @@
         <%= f.radio_button :select_address, 1 %>
        <%= f.label :customer_address, "ご自身の住所" %>
         <tr>
-     <td>〒<%= @customer.postal_code %>
-       <%= @customer.address %>
-       <%= @customer.last_name %>
-       <%= @customer.first_name %></td>
+     <td>〒<%= current_customer.postal_code %>
+       <%= current_customer.address %>
+       <%= current_customer.full_name %></td>
        </tr>
      </td>
    </tr>
@@ -69,10 +68,11 @@
   <tr>
 <td>宛名</td>
   <td><%= f.text_field :name, class: "col-auto" %></td>
+  </table>
     <div class="text-center">
     <td><%= f.submit "確認画面に進む", class:"btn btn-primary" %></td>
      </div>
    </tr>
 <% end %>
- </table>
+
 </div>

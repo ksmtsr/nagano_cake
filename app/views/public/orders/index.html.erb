@@ -18,14 +18,12 @@
        <td>
          <% order.order_details.each do |order_detail| %>
       <%= order_detail.item.name %>
+      <% @total += order_detail.subtotal %>
       <% end %>
       </td>
-      <% @cart_items.each do |cart_item| %>
-  <% @total += cart_item.subtotal %>
-   <% end %>
       <td><%= POSTAGE + @total %>円</td>
       <td><%= order.status_i18n %></td>
-      <td><%= link_to "表示する", order_path(@orders), class: "btn btn-primary btn-sm" %></td>
+      <td><%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm" %></td>
     </tr>
    <% end %>
  </tbody>

@@ -17,6 +17,9 @@ class Public::OrdersController < ApplicationController
         @order_detail.order_id = @order.id
         @order_detail.save
       end
+      #注文確定時にカート内を削除
+      cart_items = current_customer.cart_items
+      cart_items.destroy_all
       redirect_to orders_complete_path
     end
 
@@ -27,7 +30,6 @@ class Public::OrdersController < ApplicationController
     end
 
     def confirm
-      @address = Address.find(params[:order][:address_id])
       @order =  Order.new
       @cart_items = CartItem.all
       @customer = current_customer
@@ -38,19 +40,21 @@ class Public::OrdersController < ApplicationController
         @order.address = @customer.address
         @order.name = @customer.full_name
       elsif params[:order][:select_address] == "2"
+        @address = Address.find(params[:order][:address_id])
         @order.address = @address.receiver_address
         @order.postal_code = @address.postal_code
         @order.name = @address.name
       end
 
-      #@address = Address.find(params[:order][:address_id])
-      #@order.postal_code = @address.postal_code
-      #@order.address = @address.address
-      #@order.name = @address.name
     end
 
     def show
       @order = Order.find(params[:id])
+      @total = 0
+    end
+
+    def update
+      
     end
 
     private

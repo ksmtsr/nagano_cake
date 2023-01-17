@@ -20,5 +20,9 @@ class Order < ApplicationRecord
     self.last_name_kana + self.first_name_kana
   end
 
+  def subtotal
+    item.with_tax_price * amount
+  end
+
 
 end

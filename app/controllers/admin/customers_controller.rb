@@ -12,6 +12,7 @@ end
 
 def index
   @customers = Customer.all
+  @customers = Customer.order("created_at DESC").page(params[:page]).per(10)
 end
 
 def show
