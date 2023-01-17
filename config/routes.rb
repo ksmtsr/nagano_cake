@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   post 'customers/sign_in' => 'sessions#create', as: 'customer_session_path'
   get 'about' => 'homes#about', as: 'about'
-  get 'items/:id' => 'items#show', as: 'item'
+  get 'item/:id' => 'items#show', as: 'item'
   get 'items' => 'items#index', as: 'items'
   resource :items
 
@@ -46,8 +46,8 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   patch 'items/:id' => 'items#update', as: 'update_item'
-  
-  
+
+
   resources :items
 
   get 'customers/:id/edit' => 'customers#edit', as: 'edit_customer'
