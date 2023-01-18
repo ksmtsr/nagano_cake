@@ -8,7 +8,7 @@ class Admin::OrderDetailsController < ApplicationController
 
     if @order_detail.making_status == "making"
        @order.update(status:2)
-    elsif @order_detail.making_status == "complete"
+    elsif @order.order_details.complete.count == @order.order_details.count
           @order.update(status:3)
     end
 
