@@ -5,7 +5,6 @@ class Admin::OrderDetailsController < ApplicationController
     @order = Order.find(params[:order_id])
     @order_detail = @order.order_details.find(params[:id])
     @order_detail.update(order_detail_params)
-
     if @order_detail.making_status == "making"
        @order.update(status:2)
     elsif @order.order_details.complete.count == @order.order_details.count

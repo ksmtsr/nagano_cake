@@ -70,8 +70,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-gem 'devise'
-gem 'font-awesome-sass'
-gem "enum_help"
-gem 'kaminari','~> 1.2.1'
-gem 'byebug'
+  gem 'devise'
+  gem 'font-awesome-sass'
+  gem "enum_help"
+  gem 'kaminari','~> 1.2.1'
+  gem 'byebug'

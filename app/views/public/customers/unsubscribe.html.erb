@@ -6,5 +6,5 @@
  <h5>これまでの購入履歴が閲覧できなくなります。</h5>
 <h5>退会する場合は「退会する」をクリックしてください。</h5>
  <%= link_to "退会しない", customers_path, class: "btn btn-primary mt-3" %>
- <%= button_to "退会する", customer_withdrawal_path, method: :patch, class: "btn btn-danger mt-3" %>
+ <%= button_to "退会する", customer_withdrawal_path, method: :patch, "data-confirm" =>"警告ダイアログ", class: "btn btn-danger mt-3" %>
  </div>
